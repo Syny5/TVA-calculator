@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>TVA calculator</h1>
+        <p class="intro">Need to quickly calculate some price with 20% TVA ? Well, type it in.</p>
+        <h2>Price :</h2>
+        <input type="text" v-model="price" autocomplete="off" />
+        <h2>TVA (20%) : {{ tax }}</h2>
+        <h2>Total : {{ total }}</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+
+            data: {
+                price: 10
+            },
+
+            computed: {
+                tax: function(){
+                    return this.price * 0.2;
+                },
+
+                total: function(){
+                    return parseInt(this.price) + this.tax;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
